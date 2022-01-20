@@ -3,19 +3,13 @@
 # openpyxl
 # twilio
 
-import pandas as pd
-from twilio.rest import Client
-
-# Your Account SID from twilio.com/console
-account_sid = "AC7e0399e581f5c96a5e570362c8108110"
-# Your Auth Token from twilio.com/console
-auth_token  = "b7ac53ce021bcc9e0ab8cadbceb5c037"
+import pandas
 
 client = Client(account_sid, auth_token)
 
 lista_of = ['controlequalidade']
 
-lista_peca = pd.read_excel('controlequalidade.xlsx')
+lista_peca = pandas.read_excel('controlequalidade.xlsx')
 print(lista_peca)
 if (lista_peca['newadd'] > 0.9).any():
     peca = lista_peca.loc[lista_peca['newadd'] > 0.9, 'codpeca'].values[0]
